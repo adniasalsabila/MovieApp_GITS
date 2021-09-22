@@ -114,10 +114,10 @@
                     app:drawableStartCompat="@drawable/ic_baseline_movie_filter_24"
                     app:layout_constraintStart_toEndOf="@+id/poster"
                     app:layout_constraintTop_toBottomOf="@+id/text_rating"
-                    tools:text="Genre" />
+                    tools:text="Release " />
 
                 <TextView
-                    android:id="@+id/genre"
+                    android:id="@+id/release_date"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -128,7 +128,7 @@
                     app:layout_constraintStart_toEndOf="@+id/text_genre"
                     app:layout_constraintTop_toTopOf="@+id/text_genre"
                     app:layout_constraintVertical_bias="0.0"
-                    tools:text="@string/view_genre" />
+                    tools:text="12-12-2012" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

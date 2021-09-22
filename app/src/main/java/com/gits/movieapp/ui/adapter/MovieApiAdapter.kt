@@ -34,14 +34,18 @@ class MovieApiAdapter(val results: ArrayList<ResultsItem>) :
         val data = results[position]
         Glide.with(holder.itemView)
             .load("https://www.themoviedb.org/t/p/w220_and_h330_face${data.posterPath}").apply(
-            RequestOptions().override(320, 320)
-        ).into(holder.image)
+                RequestOptions().override(320, 320)
+            ).into(holder.image)
         holder.judul.text = data.title
         holder.rating.text = "Rating : ${data.voteAverage.toString()}"
         holder.releaseDate.text = "Rilis : ${data.releaseDate.toString()}"
         holder.klik.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("JUDUL", data.title)
+            intent.putExtra("TITLE", data.title)
+            intent.putExtra("RATING", data.voteAverage.toString())
+            intent.putExtra("RELEASE", data.releaseDate)
+            intent.putExtra("OVERVIEW", data.overview)
+            intent.putExtra("POSTER", "https://www.themoviedb.org/t/p/w220_and_h330_face${data.posterPath}")
             holder.itemView.context.startActivity(intent)
         }
     }
@@ -53,7 +57,7 @@ class MovieApiAdapter(val results: ArrayList<ResultsItem>) :
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val judul: TextView = itemView.findViewById(R.id.view_tittle)
         val rating: TextView = itemView.findViewById(R.id.view_rating)
-        val releaseDate: TextView = itemView.findViewById(R.id.view_genre)
+        val releaseDate: TextView = itemView.findViewById(R.id.view_release)
         val image: ImageView = itemView.findViewById(R.id.poster_list_data)
         val klik: CardView = itemView.findViewById(R.id.cardView_item)
     }
